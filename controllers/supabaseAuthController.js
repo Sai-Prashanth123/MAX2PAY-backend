@@ -480,11 +480,11 @@ exports.forgotPassword = async (req, res, next) => {
 
     console.log('=== PASSWORD RESET REQUEST ===');
     console.log('Email:', email);
-    console.log('Frontend URL:', process.env.CLIENT_URL || 'http://localhost:5173');
+    console.log('Frontend URL:', process.env.CLIENT_URL || 'https://lemon-smoke-0bf242700.2.azurestaticapps.net');
 
     // Send password reset email using Supabase Auth
     const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${process.env.CLIENT_URL || 'http://localhost:5173'}/reset-password`
+      redirectTo: `${process.env.CLIENT_URL || 'https://lemon-smoke-0bf242700.2.azurestaticapps.net'}/reset-password`
     });
 
     if (error) {

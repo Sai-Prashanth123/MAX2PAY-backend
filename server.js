@@ -20,9 +20,12 @@ app.use(helmet({
   crossOriginResourcePolicy: { policy: "cross-origin" }
 }));
 // CORS configuration - validate production origins
-const allowedOrigins = process.env.NODE_ENV === 'production' 
-  ? (process.env.CLIENT_URL ? [process.env.CLIENT_URL] : [])
-  : [process.env.CLIENT_URL || 'http://localhost:5173'];
+// CLIENT_URL can be comma-separated for multiple origins (e.g. Azure frontend + custom domain)
+const parseOrigins = (val) => (val || '')
+  .split(',')
+  .map((s) => s.trim())
+  .filter(Boolean);
+const allowedOrigins = parseOrigins(process.env.CLIENT_URL || 'https://lemon-smoke-0bf242700.2.azurestaticapps.net');
 
 app.use(cors({
   origin: (origin, callback) => {

@@ -88,7 +88,7 @@ exports.requestDemoAccess = async (req, res) => {
     
     // In production, send verification email here
     // For now, return the verification link
-    const verificationLink = `${process.env.FRONTEND_URL || 'http://localhost:5173'}/demo-verify/${verificationToken}`;
+    const verificationLink = `${process.env.CLIENT_URL || process.env.FRONTEND_URL || 'https://lemon-smoke-0bf242700.2.azurestaticapps.net'}/demo-verify/${verificationToken}`;
     
     // TODO: Send email with verification link
     console.log(`Demo access verification link: ${verificationLink}`);

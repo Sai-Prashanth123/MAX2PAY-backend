@@ -70,7 +70,7 @@ async function deletePaidInvoice() {
 
     console.log(`\n✅ Invoice ${invoiceNumber} deleted successfully!`);
     console.log(`\n📝 You can now regenerate the invoice with current orders.`);
-    console.log(`   Go to: http://localhost:5173/invoices`);
+    console.log(`   Go to: https://lemon-smoke-0bf242700.2.azurestaticapps.net/invoices`);
     console.log(`   Click: Generate Invoice`);
     console.log(`   Select: TechCorp Solutions, January 2026\n`);
 

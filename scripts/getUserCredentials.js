@@ -97,7 +97,7 @@ async function getUserCredentials() {
     console.log('2. To reset a password:');
     console.log('   - Use the "Forgot Password" link on login page');
     console.log('   - Or use: node backend/scripts/resetUserPassword.js');
-    console.log('3. Login URL: http://localhost:5173/login');
+    console.log('3. Login URL: https://lemon-smoke-0bf242700.2.azurestaticapps.net/login');
     console.log('4. Check your email spam folder for password reset emails\n');
 
     // Get Supabase Auth users for additional info

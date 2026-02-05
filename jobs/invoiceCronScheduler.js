@@ -33,7 +33,7 @@ let cronJob = null;
  * Initialize the cron scheduler
  */
 const initializeInvoiceCron = () => {
-  const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost:5001';
+  const BACKEND_URL = process.env.BACKEND_URL || 'https://max-2-pay-backend.vercel.app';
   const INTERNAL_SERVICE_KEY = process.env.INTERNAL_SERVICE_KEY || 'your-secure-internal-key-change-in-production';
 
   console.log('\n========================================');
@@ -147,7 +147,7 @@ const getNextCronRun = () => {
  * Use this for testing the cron logic without waiting
  */
 const triggerManualInvoiceGeneration = async () => {
-  const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost:5001';
+  const BACKEND_URL = process.env.BACKEND_URL || 'https://max-2-pay-backend.vercel.app';
   const INTERNAL_SERVICE_KEY = process.env.INTERNAL_SERVICE_KEY || 'your-secure-internal-key-change-in-production';
 
   console.log('\n🧪 MANUAL TRIGGER: Simulating cron job execution...\n');

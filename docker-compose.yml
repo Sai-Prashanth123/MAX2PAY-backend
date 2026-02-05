@@ -8,25 +8,19 @@ services:
     ports:
       - "5001:5001"
     environment:
-      # Runtime environment
       NODE_ENV: production
       PORT: 5001
 
-      # Supabase configuration (REPLACE with your real values – do NOT commit secrets)
       SUPABASE_URL: "https://taboklgtcpykicqufkha.supabase.co"
       SUPABASE_ANON_KEY: "REPLACE_WITH_SUPABASE_ANON_KEY"
       SUPABASE_SERVICE_ROLE_KEY: "REPLACE_WITH_SUPABASE_SERVICE_ROLE_KEY"
 
-      # Application URLs
-      CLIENT_URL: "http://localhost:5173"
-      BACKEND_URL: "http://localhost:5001"
+      CLIENT_URL: "https://lemon-smoke-0bf242700.2.azurestaticapps.net"
+      BACKEND_URL: "https://max-2-pay-backend.vercel.app"
 
-      # Invoice cron + internal service key
       ENABLE_INVOICE_CRON: "false"
       INTERNAL_SERVICE_KEY: "3plfast-internal-service-key-change-in-production-2026"
 
-      # Optional: Cloudinary (if you use uploads/avatars)
       CLOUDINARY_CLOUD_NAME: "REPLACE_WITH_CLOUDINARY_CLOUD_NAME"
       CLOUDINARY_API_KEY: "REPLACE_WITH_CLOUDINARY_API_KEY"
       CLOUDINARY_API_SECRET: "REPLACE_WITH_CLOUDINARY_API_SECRET"
-
