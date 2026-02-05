@@ -6,16 +6,17 @@ const supabaseAdmin = require('../config/supabaseAdmin');
  */
 async function updateAdminPassword() {
   try {
-    const adminEmail = 'Orders@max2pay.com';
+    // Use lowercase: Supabase Auth stores email in lowercase
+    const adminEmail = 'orders@max2pay.com';
     const newPassword = 'SecureAdmin@2026'; // Change this to your desired password
 
     console.log('🔐 Updating admin password...\n');
 
-    // Find the admin user
+    // Find the admin user (match lowercase)
     const { data: adminProfile } = await supabaseAdmin
       .from('user_profiles')
       .select('id, email, role')
-      .eq('email', adminEmail)
+      .ilike('email', adminEmail)
       .single();
 
     if (!adminProfile) {
