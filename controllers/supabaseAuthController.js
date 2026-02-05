@@ -92,16 +92,24 @@ exports.login = async (req, res, next) => {
       email,
       password
     });
-    if (authError || !authData.user) {      
+    if (authError || !authData.user) {
       // Log failed login attempt
       const { createLoginAudit } = require('./supabaseSecurityController');
       const clientIP = req.ip || req.headers['x-forwarded-for']?.split(',')[0] || 'unknown';
       const userAgent = req.headers['user-agent'] || 'unknown';
       await createLoginAudit(null, email, clientIP.replace(/^::ffff:/, ''), userAgent, 'failed', authError?.message, req);
-      
+
+      // Return clear message for common Supabase auth errors
+      let message = authError?.message || 'Invalid email or password';
+      if (message === 'Invalid login credentials') {
+        message = 'Invalid email or password. Please check your credentials.';
+      } else if (message.toLowerCase().includes('email not confirmed')) {
+        message = 'Email not confirmed. Please check your inbox for the confirmation link, or ask an admin to confirm your account in Supabase.';
+      }
+
       return res.status(401).json({
         success: false,
-        message: authError?.message || 'Invalid email or password'
+        message
       });
     }
 
